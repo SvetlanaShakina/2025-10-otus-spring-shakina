@@ -1,0 +1,6 @@
+question,answer1,answer2,answer3,answer4
+What is the default value of a local variable in Java?,A - 0,B - null,C - Not assigned+,D - Depends on the variable type
+Which data type is used to store a single character in Java?,A - char+,B - String,C - Character,D - byte
+What happens if you call a method on a null object reference?,A - The method executes successfully,B - The compiler replaces null with an empty object,C - A NullPointerException is thrown+,D - Nothing happens
+Which access modifier makes a field visible only within the same class?,A - protected,B - private+,C - public,D - default
+What is a constructor in Java?,A - A method that returns an object,B - A special method used to initialize an object+,C - A static method with no parameters,D - A function used to destroy an object
