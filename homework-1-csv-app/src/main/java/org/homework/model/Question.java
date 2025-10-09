@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Line {
-    private String question;
+public class Question {
+    private String questionText;
     private List<String> answers;
 }

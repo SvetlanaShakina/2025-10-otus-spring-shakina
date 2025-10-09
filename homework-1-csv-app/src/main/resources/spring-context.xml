@@ -4,12 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <beans>
-        <bean id="CsvReader" class="org.homework.utils.CsvReaderImpl">
+        <bean id="questionReader" class="org.homework.dao.QuestionReaderImpl">
             <constructor-arg value="questions.csv"/>
         </bean>
-    </beans>
-    <beans>
-        <bean id="QuestionerPrinter" class="org.homework.utils.QuestionerPrinterSimple">
+        <bean id="questionPrinter" class="org.homework.service.QuestionPrinterImpl">
+            <constructor-arg value="#{T(java.lang.System).out}"/>
+            <constructor-arg value="#{T(java.lang.System).in}"/>
+            <constructor-arg ref="questionReader"/>
         </bean>
     </beans>
 </beans>
