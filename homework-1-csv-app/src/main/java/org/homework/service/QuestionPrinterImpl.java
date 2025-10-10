@@ -7,17 +7,16 @@ import org.homework.model.Question;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Scanner;
 
 public class QuestionPrinterImpl implements QuestionPrinter {
 
-    private final PrintStream out;
-    private final BufferedReader in;
     private final QuestionReader questionReader;
+    private final Scanner scanner;
 
-    public QuestionPrinterImpl(PrintStream out, InputStream in, QuestionReader questionReader) {
-        this.out = out;
-        this.in = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+    public QuestionPrinterImpl(QuestionReader questionReader) {
         this.questionReader = questionReader;
+        this.scanner = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     }
 
     /**
@@ -28,21 +27,27 @@ public class QuestionPrinterImpl implements QuestionPrinter {
         List<Question> questions;
         try {
             questions = questionReader.readAll();
-        } catch (IOException | CsvException e) {
-            out.println("Не удалось загрузить вопросы: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Не удалось загрузить вопросы: " + e.getMessage());
             return;
         }
+
         for (Question q : questions) {
-            out.println(q.getQuestionText());
-            q.getAnswers().forEach(out::println);
-            pressAnyKeyToContinue();
+            System.out.println(q.getQuestionText());
+            for (int i = 0; i < q.getAnswers().size(); i++) {
+                System.out.println((i + 1) + ") " + q.getAnswers().get(i));
+            }
+            pause();
         }
     }
 
-    private void pressAnyKeyToContinue() {
-        out.println("Press Enter key to continue...");
+    private void pause() {
+        System.out.println("Press Enter key to continue...");
         try {
-            in.readLine();
-        } catch (IOException ignored) { }
+            scanner.nextLine();
+        } catch (Exception ignore)
+        {
+
+        }
     }
 }

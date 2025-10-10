@@ -8,8 +8,6 @@
             <constructor-arg value="questions.csv"/>
         </bean>
         <bean id="questionPrinter" class="org.homework.service.QuestionPrinterImpl">
-            <constructor-arg value="#{T(java.lang.System).out}"/>
-            <constructor-arg value="#{T(java.lang.System).in}"/>
             <constructor-arg ref="questionReader"/>
         </bean>
     </beans>
