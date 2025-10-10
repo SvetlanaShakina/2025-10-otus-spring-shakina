@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <beans>
+        <bean id="questionReader" class="org.homework.dao.QuestionReaderImpl">
+            <constructor-arg value="questions.csv"/>
+        </bean>
+        <bean id="questionPrinter" class="org.homework.service.QuestionPrinterImpl">
+            <constructor-arg ref="questionReader"/>
+        </bean>
+    </beans>
+</beans>
