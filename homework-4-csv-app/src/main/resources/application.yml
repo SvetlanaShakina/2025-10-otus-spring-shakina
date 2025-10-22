@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: quiz-app
+  messages:
+    basename: messages
+    fallback-to-system-locale: false
+    locale: en
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  charset:
+    console: UTF-8
+
+quiz:
+  csv-base-name: questions
+  pass-threshold: 3
+  locale: en
+  autorun: true
