@@ -45,11 +45,17 @@ public class QuestionPrinterImplTest {
 
     @Test
     void askAndReadAnswer_readsUserInputNumber() {
+        var originalIn = System.in;
         var in = new ByteArrayInputStream("2\n".getBytes(StandardCharsets.UTF_8));
-        System.setIn(in);
-        var q = new Question("Pick one", List.of("X","Y","Z"), 2);
-        int answer = printer.askAndReadAnswer(q);
-        assertThat(answer).isEqualTo(2);
+        try {
+            System.setIn(in);
+            printer = new QuestionPrinterImpl(reader);
+            var q = new Question("Pick one", List.of("X","Y","Z"), 2);
+            int answer = printer.askAndReadAnswer(q);
+            assertThat(answer).isEqualTo(2);
+        } finally {
+            System.setIn(originalIn);
+        }
     }
 
     @AfterEach

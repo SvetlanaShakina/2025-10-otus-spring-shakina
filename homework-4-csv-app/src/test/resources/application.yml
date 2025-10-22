@@ -1,0 +1,10 @@
+quiz:
+  autorun: false
+  csv-base-name: questions-test
+  locale: en
+  pass-threshold: 1
+
+spring:
+  messages:
+    basename: messages
+    fallback-to-system-locale: false
